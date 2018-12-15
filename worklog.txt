@@ -1,0 +1,159 @@
+Things to do:
+
+
+Day 1:
+
+-Finish and organize HTML structure
+     -Add a lobby
+     -Ready button
+
+
+
+
+
+Day 3:
+     -Werewolf game should be irrelevant to clients
+     -SERVER IS STORYTELLER
+     -Server plays the werewolf game and communicates information between clients and the game, no need to send
+     stuff from the game to the clients. all communication is held within server.js
+     -Werewolf.js instead will send blurbs to the server of what turn it is, what needs to be prompted, etc.
+     -Server.js DOES what werewolf decides (just as the storyteller follows the rulebook)
+
+
+
+
+Day 4:
+
+Hows the game going to work?
+Possible bug --> 1 werewolf and 1 villager left?
+
+
+//START =========================================================================
+start game is called when everyone in the lobby is Ready
+
+the clients are told to change the view to gameView and each user is given their Role
+
+based on role, the seer(and eventually other roles) should be prompted about their night skills
+     edit: where do these responses go?
+          Well, for seer, it need not go anywhere. The client has sufficient information to tell that user if the person
+          they wish to inspect is a werewolf or not
+
+          NOTE: FOR EACH TURN, needs to be a "done Counter" so that the game waits for every player to Finish
+          the available actions
+          IF(doneCount == users.length) //Call day if Night, Call night if day
+
+Solution: scaffold cycle (probably a name for this, its really basic, but I like scaffold cycle)
+     Not reliant on time but instead the last user interaction of each "round"
+
+     scaffold because....it looks like it with the crisscross pattern
+
+     Server                   Client
+
+     Send event
+               \
+                  \
+                     \
+                        \
+                          \
+                              receive event
+                              do stuff
+                              send event
+                            /
+                         /
+                       /
+                     /
+                  /
+     Receive event
+     DO stuff
+     wait for all users to respond
+     check if game over
+     record changes based on responses
+     send event
+                    --Repeat until win condition is met--
+
+
+     TODO:
+          1 ----nothing ----
+          2 create win condition boolean function (DONE)
+          3 create day/night cycle (similar to )
+
+==================================================================================
+
+
+Day 5:
+     Processing of day lynch votes works on the server side
+
+     TODO:
+          1) Can submit vote without selecting a radio button
+          2) put dialogue above vote in the div above it not prompt promptZone
+          3) properly adjust the client side players list and listen/react to "day summary" emit
+          4) make night work, like day but:
+               a) werewolf chat?
+               b) seer prompt?
+               c) neither for villager?
+
+
+
+Day 8:
+	NOTE two major bugs: can vote for undefined on radio buttons, werewolfs have the option to night note werewolves, AND last vote did not work properly (could be a fluke, but 2/4 votes were for a and D got killed) 
+	TODO: 
+		1)change game.numWolfs to return the amount of ALIVE WEREWOLFS
+		2) get night cycle working 
+	
+
+
+
+
+-----------------Username Prompt---------------------------------------
+
+**make username submissions alpha numeric
+large & centered on screen
+Some sort of logo and Github link
+
+
+--------------------LOBBY-------------------------------------------------
+min 3
+max 12
+List off all joined players
+"Ready up" button?
+Assign each player a role
+     -Append to name with special character
+     Tim#werewolf
+     -parse on server to send username for new messages in chat
+
+     Phase 1:
+          -Werewolf (x2?)
+          -Seer
+          -Villager
+          -Hunter
+     Phase 2:
+          -Priest (protect)
+          -Tanner
+          -minion
+Display each player's role
+Render game
+
+-------------IT'S ALL ABOUT THE GAME ... (from here on out)------------------------------------------------------
+
+Things to track:
+     -role (can hide inside list of names on server)
+     -Dead er' alive
+     -Night and Day Cycle (# of alive, to check if game is over)
+          numWerewolves && one or more werewolves are alive, werewolves win
+          all werewolfs are dead, villagers win
+     Day time //////////////////////////////////
+     ////////////
+     Clear the chat before the start of each day(so people dont see werewolf chats)
+          End of day -> vote on who to kill
+               -Radio button form
+               -majority rules
+               -IF Tie --->List voting results,  reset vote
+               -ELSE show who won majority, and kill said player
+
+     Night time ////////////////////////////////////////////
+
+     -Present Non werewolf skills with prompts
+          -ask the seer who they want to invesitgate
+     -werewolfs
+          -Repurpose the chat at night for only the werewolfs
+          -Same vote for who to kill but only between werewolfs And MUST be unanimous

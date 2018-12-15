@@ -1,0 +1,184 @@
+/*prob should make this responsive eventually*/
+
+body
+{
+     background-image: url("nightbg.png");
+     background-size: cover;
+     background-repeat: no-repeat;
+     background-color: #615A91;
+}
+@font-face {
+     font-family: rothenbg;
+     src: url(fonts/rothenbg.ttf);
+
+     font-family: FBI;
+     src: url(fonts/FBIOldReport-Regular.ttf);
+}
+#introView
+{
+     text-align: center;
+}
+#mainTitle
+{
+     color: #dddddd;
+     font-family: FBI;
+     font-size: 80pt;
+     font-weight: 500;
+}
+#loginErr
+{
+     color: #ff0000;
+     font-size: 14pt;
+     visibility: hidden;
+
+}
+#userInput
+{
+     width: 60%;
+}
+#whatIs
+{
+     color: #000000;
+}
+#lobbyChat
+{
+
+     height: 300px;
+     overflow: auto;
+     overflow-x: hidden;
+     display: flex;
+     flex-direction: column-reverse;
+     border: 3px solid;
+     border-color: #aaaaaa;
+     border-radius: 1px;
+     background-color: #ffffff;
+}
+.newMessage
+{
+     padding-top, padding-bottom: 3px;
+     flex-flow: column-reverse;
+}
+#lobby
+{
+      display: none;
+}
+#online
+{
+     width: 200px;
+
+}
+.username-list-item
+{
+     list-style-type: none;
+}
+#lobbyUserList
+{
+     background-color: rgba(255,255,255,0.7);
+
+}
+.ready, .alive
+{
+     color: #00aa00;
+}
+.dead
+{
+     color: #aa0000;
+}
+#gameView
+{
+     display: none;
+}
+#villageChat
+{
+     position: fixed;
+     height: 75%;
+     width: 20%;
+     right: 0;
+     top: 20%;
+     overflow: auto;
+     display: flex;
+     flex-direction: column-reverse;
+     border: 3px solid;
+     border-color: #aaaaaa;
+     border-radius: 1px;
+     background-color: #ffffff;
+     overflow-x: hidden;
+}
+#nameAndRole
+{
+     left:0;
+     top:0;
+     position: fixed;
+     font-size: 16pt;
+     color:#ffffff;
+}
+#stDialogue
+{
+     display: flex;
+     flex-direction: column-reverse;
+     margin-top: 5%;
+     border: 3px solid;
+     border-color: #ffffff;
+     text-align: center;
+     width:80%;
+     height: 100px;
+     overflow: auto;
+     overflow-x:hidden;
+}
+#promptZone
+{
+     margin-top: 5%;
+     border: 3px solid;
+     border-color: #ffffff;
+     text-align: center;
+     width: 80%;
+     height: 300px;
+}
+#villagePlayerSidebar
+{
+     position: fixed;
+     width: 20%;
+     height: 20%;
+     right: 0;
+     top: 0;
+     background-color: #ffffff;
+     overflow: auto;
+     overflow-x: hidden;
+
+}
+#villagePlayerList
+{
+     list-style-type: none;
+}
+#villageChatInput
+{
+     height: 5%;
+     width: 20%;
+     position: fixed;
+     right: 0;
+     bottom:0;
+     display: block;
+}
+#nightPrompt
+{
+
+}
+#wolfChat
+{
+     height: 200px;
+     width: 600px;
+     background-color: #ffffff;
+     overflow: auto;
+     overflow-x: hidden;
+     display:none;
+     flex-direction: column-reverse;
+     
+}
+#wolfChatForm
+{
+     width: 600px;
+}
+#wolfChatInput
+{
+     width:100%;
+}
